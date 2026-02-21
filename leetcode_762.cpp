@@ -12,3 +12,24 @@ public:
         return cnt;
     }
 };
+
+// another method to solve it 
+
+class Solution {
+public:
+    bool isPrime(int n){
+        if(n < 2) return false;
+        for(int i=2; i<n; i++){
+            if(n%i==0) return false;
+        }
+        return true;
+    }
+    int countPrimeSetBits(int left, int right) {
+        int ans=0;
+        for(int i=left; i<=right; i++){
+            int setbit = __builtin_popcount(i); // it will tell you the no of set bit in a number 
+            if(isPrime(setbit)) ans++;
+        }
+        return ans;
+    }
+};
